@@ -24,7 +24,9 @@ public final class JBDatePickerView: UIView {
     var dateToPresent: Date!
     var weekdaysView: WeekDaysView!
     fileprivate var dateFormatter = DateFormatter()
-  
+
+    public var monthFormatString = "MMMM yyyy"
+
     public weak var delegate: JBDatePickerViewDelegate? {
         didSet{
             commonInit()
@@ -122,7 +124,6 @@ extension JBDatePickerView {
     
     func monthDescriptionForDate(_ date: Date) -> String {
 
-        let monthFormatString = "MMMM yyyy"
         dateFormatter.dateFormat = monthFormatString
         if let preferredLanguage = Bundle.main.preferredLocalizations.first {
             if delegate?.shouldLocalize == true {
